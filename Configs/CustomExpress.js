@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import health from '@cloudnative/health-connect';
-// import routes from '../routes/index.js';
+import routes from '../Routes/index.js';
 
 const CustomExpress = express();
 const healthcheck = new health.HealthChecker();
@@ -19,7 +19,7 @@ CustomExpress.use(bodyParser.urlencoded({extended: true}))
         next();
 });
 
-// CustomExpress.use('/', routes);
+CustomExpress.use('/', routes);
 
 CustomExpress.use('/liveness', health.LivenessEndpoint(healthcheck));
 
